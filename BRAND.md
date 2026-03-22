@@ -29,4 +29,5 @@ We install simple lead-response systems that:
 
 ## Domain
 - Primary domain: **ocalaleadsystems.com**
-- Recommended emails: `hello@ocalaleadsystems.com`, `partnerships@ocalaleadsystems.com`
+- Public contact: `hello@ocalaleadsystems.com`
+- Outreach/sales: `partnerships@ocalaleadsystems.com`
