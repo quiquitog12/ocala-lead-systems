@@ -1,0 +1,23 @@
+<svg width="1400" height="360" viewBox="0 0 1400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="98" y1="52" x2="1240" y2="309" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2D7AA"/>
+      <stop offset="0.52" stop-color="#D1B176"/>
+      <stop offset="1" stop-color="#9F7F49"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="30" y1="20" x2="330" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171B24"/>
+      <stop offset="1" stop-color="#0B0E13"/>
+    </linearGradient>
+  </defs>
+  <rect x="30" y="30" width="300" height="300" rx="72" fill="url(#bg)"/>
+  <rect x="31" y="31" width="298" height="298" rx="71" stroke="url(#gold)" stroke-opacity="0.28" stroke-width="2"/>
+  <path d="M121 180C121 146.312 148.36 119 182 119C203.734 119 223.433 130.566 234.478 148.674L208.413 163.724C203.188 154.742 193.594 148.674 182.558 148.674C164.193 148.674 149.64 163.58 149.64 180C149.64 196.42 164.193 211.326 182.558 211.326C193.594 211.326 203.188 205.258 208.413 196.276L234.478 211.326C223.433 229.434 203.734 241 182 241C148.36 241 121 213.688 121 180Z" fill="url(#gold)"/>
+  <path d="M247 120H277V212H247V120Z" fill="url(#gold)"/>
+  <path d="M246.5 240.5H294V269H217V120H246.5V240.5Z" fill="url(#gold)"/>
+  <path d="M100 269C122.091 269 140 251.091 140 229V228C140 206.864 125.32 189.037 105.75 184.794L88.9688 181.132C81.8207 179.573 76.75 173.149 76.75 165.625C76.75 156.833 83.9581 149.625 92.75 149.625H131.5V120H92.75C68.1123 120 48 140.112 48 164.75V165.75C48 186.861 62.6322 204.652 82.1656 208.946L98.8844 212.618C106.102 214.203 111.25 220.65 111.25 228.125C111.25 237.175 103.925 244.5 94.875 244.5H51V269H100Z" fill="url(#gold)"/>
+  <text x="390" y="150" fill="#F6F1E8" font-family="Cormorant Garamond, serif" font-size="94" font-weight="600" letter-spacing="-4">Ocala Lead Systems</text>
+  <text x="396" y="208" fill="#D1B176" font-family="IBM Plex Mono, monospace" font-size="22" letter-spacing="6">PREMIUM LEAD RESPONSE SYSTEMS</text>
+  <line x1="396" y1="240" x2="1240" y2="240" stroke="url(#gold)" stroke-opacity="0.22"/>
+  <text x="396" y="286" fill="#B4AD9D" font-family="Plus Jakarta Sans, sans-serif" font-size="28">Built for local service businesses in Ocala, Florida</text>
+</svg>

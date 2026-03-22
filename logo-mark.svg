@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="72" y1="64" x2="440" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171B24"/>
+      <stop offset="1" stop-color="#0B0E13"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="120" y1="120" x2="392" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2D7AA"/>
+      <stop offset="0.52" stop-color="#D1B176"/>
+      <stop offset="1" stop-color="#9F7F49"/>
+    </linearGradient>
+  </defs>
+  <rect x="36" y="36" width="440" height="440" rx="112" fill="url(#bg)"/>
+  <rect x="36.75" y="36.75" width="438.5" height="438.5" rx="111.25" stroke="url(#gold)" stroke-opacity="0.32" stroke-width="1.5"/>
+  <circle cx="256" cy="256" r="154" stroke="url(#gold)" stroke-opacity="0.18"/>
+  <path d="M173 256C173 207.399 211.951 168 260 168C290.674 168 318.498 184.206 334.014 209.5L297.59 230.526C290.248 217.977 276.758 209.5 261.25 209.5C235.447 209.5 215 230.323 215 256C215 281.677 235.447 302.5 261.25 302.5C276.758 302.5 290.248 294.023 297.59 281.474L334.014 302.5C318.498 327.794 290.674 344 260 344C211.951 344 173 304.601 173 256Z" fill="url(#gold)"/>
+  <path d="M352 170H394V303.5H352V170Z" fill="url(#gold)"/>
+  <path d="M351.5 343.5H418V382H311V170H351.5V343.5Z" fill="url(#gold)"/>
+  <path d="M145 382C177.033 382 203 356.033 203 324V322.5C203 291.846 181.767 266.014 153.25 259.932L128.809 254.695C118.405 252.466 111 243.278 111 232.5C111 219.893 121.393 209.5 134 209.5H189V170H134C99.281 170 71 198.281 71 233V234.5C71 265.112 92.175 290.91 120.631 297.064L144.976 302.332C155.48 304.606 163 313.821 163 324.5C163 337.479 152.479 348 139.5 348H75V382H145Z" fill="url(#gold)"/>
+</svg>
