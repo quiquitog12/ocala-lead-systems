@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation Systems | Ocala Lead Systems</title>
+  <meta name="description" content="AI automation systems for local businesses: lead capture, CRM database, follow-up, booking, reactivation, reporting, and custom operational workflows." />
+  <meta name="keywords" content="AI automation for local business, CRM automation, lead database, follow-up automation, Ocala AI agency, business automation systems" />
+  <meta property="og:title" content="AI Automation Systems | Ocala Lead Systems" />
+  <meta property="og:description" content="We build AI-powered lead, CRM, database, and follow-up systems for local businesses that want more booked jobs and less manual work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ocalaleadsystems.com/ai-automation.html" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --bg-soft: #11141c;
+      --panel: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(209,177,118,0.34);
+      --text: #f6f1e8;
+      --muted: #b4ad9d;
+      --accent: #d1b176;
+      --accent-2: #f0dcc0;
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 28px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(209,177,118,.14), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,.05), transparent 24%),
+        linear-gradient(180deg, #07090d 0%, #090b10 38%, #0b0f15 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      pointer-events: none;
+      opacity: .34;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100% - 32px, var(--max)); margin: 0 auto; position: relative; z-index: 1; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0 8px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; font-weight: 700; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(135deg, rgba(209,177,118,.2), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 14px; color: var(--accent-2);
+    }
+    .brand-copy small { display:block; color:var(--muted); font-size:12px; letter-spacing:.18em; text-transform:uppercase; }
+    .brand-copy span { display:block; font-size:18px; letter-spacing:-.03em; }
+    .nav-links { display:flex; align-items:center; gap:22px; color:var(--muted); font-size:14px; }
+    .nav-call {
+      padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.03); color: var(--text);
+    }
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: grid; grid-template-columns: 1.06fr .94fr; gap: 24px; align-items: center;
+      padding: 28px 0 76px;
+    }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:12px; padding:11px 15px; border-radius:999px;
+      border:1px solid var(--line-strong); background:rgba(209,177,118,.08); color:var(--accent-2);
+      font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    }
+    .hero h1 {
+      margin:18px 0 16px; font-family:"Cormorant Garamond", serif; font-weight:600;
+      font-size: clamp(54px, 8.2vw, 102px); line-height:.9; letter-spacing:-.05em; max-width:760px;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .sub { max-width:660px; color:var(--muted); font-size:18px; line-height:1.8; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:16px 22px; border-radius:18px; font-weight:800; border:1px solid transparent; transition:.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #f2d7aa); color:#0a0c12; box-shadow:0 18px 40px rgba(209,177,118,.18); }
+    .btn.secondary { border-color:var(--line); background:rgba(255,255,255,.03); color:var(--text); }
+    .micro-proof { margin-top:18px; display:flex; flex-wrap:wrap; gap:16px; color:var(--muted); font-size:13px; }
+    .micro-proof span::before { content:"•"; color:var(--accent); margin-right:8px; }
+    .card, .hero-panel {
+      border:1px solid var(--line); border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow); backdrop-filter: blur(14px);
+    }
+    .hero-panel { padding: 24px; }
+    .stack { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .signal { padding:18px; border-radius:20px; border:1px solid rgba(255,255,255,.08); background:rgba(0,0,0,.22); }
+    .signal .label { font-size:12px; text-transform:uppercase; letter-spacing:.18em; color:var(--muted); }
+    .signal .value { margin-top:8px; font-size:30px; font-weight:800; letter-spacing:-.05em; }
+    .signal .hint { margin-top:6px; color:var(--muted); font-size:13px; line-height:1.6; }
+    .list-box {
+      margin-top: 14px; padding: 24px; border-radius: 26px; border:1px solid var(--line-strong);
+      background: linear-gradient(180deg, rgba(209,177,118,.12), rgba(255,255,255,.02)), #0f131b;
+    }
+    .list-box h3 { margin:0 0 14px; font-size:22px; }
+    .mini { font-size:12px; color:var(--muted); letter-spacing:.15em; text-transform:uppercase; font-family:"IBM Plex Mono", monospace; }
+    ul.clean { list-style:none; padding:0; margin:16px 0 0; display:grid; gap:12px; }
+    ul.clean li { padding-left:18px; position:relative; color:var(--muted); line-height:1.7; }
+    ul.clean li::before { content:""; width:7px; height:7px; border-radius:999px; background:var(--accent); position:absolute; left:0; top:.65em; }
+    section { padding: 34px 0; }
+    .section-head { display:grid; grid-template-columns:.92fr 1.08fr; gap:20px; align-items:end; margin-bottom:18px; }
+    .section-kicker { color:var(--accent); font-family:"IBM Plex Mono", monospace; text-transform:uppercase; letter-spacing:.16em; font-size:12px; margin-bottom:10px; }
+    h2 { margin:0; font-family:"Cormorant Garamond", serif; font-size:clamp(36px, 5vw, 62px); line-height:.94; letter-spacing:-.04em; }
+    .section-copy { margin:0; color:var(--muted); line-height:1.8; font-size:16px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .service-card, .industry-card, .faq-card, .tier, .stack-card { padding:24px; }
+    .idx, .tag { font-family:"IBM Plex Mono", monospace; color:var(--accent); font-size:12px; letter-spacing:.18em; text-transform:uppercase; }
+    .service-card h3, .industry-card h3, .faq-card h3, .tier h3, .stack-card h3 { margin:14px 0 10px; font-size:24px; letter-spacing:-.03em; }
+    .service-card p, .industry-card p, .faq-card p, .tier p, .stack-card p { margin:0; color:var(--muted); line-height:1.8; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .tier.featured { border-color: var(--line-strong); transform: translateY(-8px); }
+    .price { font-size:46px; font-weight:800; letter-spacing:-.06em; margin:16px 0 8px; }
+    .small { color:var(--muted); font-size:14px; }
+    .final-band {
+      padding: 28px; border-radius: var(--radius); border:1px solid var(--line-strong);
+      background: linear-gradient(135deg, rgba(209,177,118,.14), rgba(255,255,255,.03));
+      display:grid; grid-template-columns:1.15fr .85fr; gap:18px; align-items:center;
+    }
+    footer { padding: 26px 0 40px; color: var(--muted); font-size: 14px; }
+    .footer-grid { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:22px; }
+    @media (max-width: 1100px) {
+      .hero, .section-head, .final-band, .pricing-grid, .grid-4 { grid-template-columns:1fr; }
+      .grid-3, .stack { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width: 780px) {
+      .nav { gap:16px; flex-direction:column; align-items:flex-start; }
+      .nav-links { flex-wrap:wrap; gap:12px 16px; }
+      .grid-3, .grid-4, .pricing-grid, .stack { grid-template-columns:1fr; }
+      .hero { padding-top:12px; }
+      .btn { width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="./index.html">
+        <div class="brand-mark">OLS</div>
+        <div class="brand-copy">
+          <small>Ocala, Florida</small>
+          <span>Ocala Lead Systems</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#systems">Systems</a>
+        <a href="#offers">Offers</a>
+        <a href="#pricing">Packages</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-call" href="tel:3525506403">352-550-6403</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">AI automation, CRM, database, and lead systems</div>
+        <h1>Build a business that follows up, books, and organizes itself <em>faster.</em></h1>
+        <p class="sub">Ocala Lead Systems helps local businesses install practical AI automation: lead capture, database cleanup, CRM workflows, instant follow-up, booking flows, reactivation campaigns, and custom operational systems that reduce manual work without making your business feel robotic.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="tel:3525506403">Book a strategy call</a>
+          <a class="btn secondary" href="#pricing">See packages</a>
+        </div>
+        <div class="micro-proof">
+          <span>Lead response + qualification</span>
+          <span>CRM + database structure</span>
+          <span>AI-powered follow-up and routing</span>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="stack">
+          <div class="signal">
+            <div class="label">Response speed</div>
+            <div class="value">24/7</div>
+            <div class="hint">Reply faster to leads, even after hours, without relying on manual staff availability.</div>
+          </div>
+          <div class="signal">
+            <div class="label">Admin reduction</div>
+            <div class="value">Less busywork</div>
+            <div class="hint">Cut repeated intake, reminders, routing, and basic qualification tasks.</div>
+          </div>
+        </div>
+        <div class="list-box">
+          <div class="mini">What a modern system can include</div>
+          <h3>More than a chatbot.</h3>
+          <ul class="clean">
+            <li>Lead capture forms connected to a real database</li>
+            <li>Instant AI follow-up by email, SMS, or web chat</li>
+            <li>CRM stages and qualification rules that actually make sense</li>
+            <li>Appointment booking, reminders, no-show protection, and reactivation</li>
+            <li>Internal alerts, dashboards, and cleaner sales handoff</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">The opportunity</div>
+          <h2>Most businesses do not need more software. They need better flow.</h2>
+        </div>
+        <p class="section-copy">We position AI the right way: not as a toy, not as hype, and not as a replacement for your team. We use it to build cleaner systems around your leads, conversations, bookings, and customer data so your business moves faster with less friction.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card service-card">
+          <div class="idx">01</div>
+          <h3>Lead capture & intake</h3>
+          <p>Collect the right information from the first interaction so your team stops chasing incomplete inquiries.</p>
+        </div>
+        <div class="card service-card">
+          <div class="idx">02</div>
+          <h3>Database & CRM structure</h3>
+          <p>Store leads, conversations, notes, status, and follow-up logic in one organized system instead of scattered spreadsheets and inboxes.</p>
+        </div>
+        <div class="card service-card">
+          <div class="idx">03</div>
+          <h3>AI follow-up automation</h3>
+          <p>Reply, nurture, remind, route, and reactivate faster while keeping the messaging aligned with your business tone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Systems we build</div>
+          <h2>Pick the bottleneck. We build the system around it.</h2>
+        </div>
+        <p class="section-copy">Some clients need lead follow-up. Others need booking. Others need a cleaner client database and reporting layer. The point is to install something operationally useful — not generic AI fluff.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card stack-card">
+          <h3>Lead Capture System</h3>
+          <p>Forms, qualification logic, tagging, lead routing, and instant notifications.</p>
+        </div>
+        <div class="card stack-card">
+          <h3>AI Follow-Up System</h3>
+          <p>Automated replies, nurture sequences, reminders, and lead warming flows.</p>
+        </div>
+        <div class="card stack-card">
+          <h3>Booking + Reminder System</h3>
+          <p>Scheduling, confirmations, reminders, reschedules, and no-show reduction.</p>
+        </div>
+        <div class="card stack-card">
+          <h3>CRM + Database System</h3>
+          <p>Organized customer records, sales stages, notes, and actionable reporting.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Who this fits</div>
+          <h2>Built for businesses where every missed follow-up costs money.</h2>
+        </div>
+        <p class="section-copy">This works especially well in local service categories where speed, trust, and organization matter: med spas, clinics, home services, real estate, legal intake, home care, and high-ticket local operators.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card industry-card"><h3>Home Services</h3><p>Capture urgency, address, service type, and callback details immediately.</p></div>
+        <div class="card industry-card"><h3>Med Spas & Clinics</h3><p>Handle inquiries, treatment interest, reminders, and booking follow-up without chaos.</p></div>
+        <div class="card industry-card"><h3>Real Estate</h3><p>Qualify by budget, timing, area, and intent before an agent spends time manually sorting.</p></div>
+        <div class="card industry-card"><h3>Professional Services</h3><p>Use intake + CRM structure to stop losing valuable prospects to slow first response.</p></div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Packages</div>
+          <h2>Three ways to buy the system.</h2>
+        </div>
+        <p class="section-copy">Start with a focused install or go straight into a larger automation setup if your business already has volume and wants more leverage.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="card tier">
+          <div class="tag">Starter</div>
+          <h3>Lead Capture + Response</h3>
+          <div class="price">$1,500</div>
+          <div class="small">Best for one workflow bottleneck</div>
+          <ul class="clean">
+            <li>1 core intake or lead flow</li>
+            <li>Basic database structure</li>
+            <li>Simple automated follow-up</li>
+            <li>Fast local-business install</li>
+          </ul>
+        </div>
+        <div class="card tier featured">
+          <div class="tag">Most Popular</div>
+          <h3>AI Growth System</h3>
+          <div class="price">$3,000</div>
+          <div class="small">For businesses that want real leverage</div>
+          <ul class="clean">
+            <li>Lead capture + CRM pipeline</li>
+            <li>AI follow-up logic</li>
+            <li>Booking / reminders / routing</li>
+            <li>Reporting or dashboard layer</li>
+          </ul>
+        </div>
+        <div class="card tier">
+          <div class="tag">Custom</div>
+          <h3>Operations Automation</h3>
+          <div class="price">From $5,000</div>
+          <div class="small">For multi-step or multi-channel workflows</div>
+          <ul class="clean">
+            <li>Custom database design</li>
+            <li>Advanced AI workflow logic</li>
+            <li>Team routing + notifications</li>
+            <li>Custom backend integrations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Why buyers say yes</div>
+          <h2>The offer feels grounded because it solves operational pain.</h2>
+        </div>
+        <p class="section-copy">We are not selling a magic robot. We are selling a cleaner business engine: better organization, faster follow-up, cleaner handoff, and less wasted staff time.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card service-card"><h3>More booked opportunities</h3><p>Leads get touched faster and tracked better instead of going cold in silence.</p></div>
+        <div class="card service-card"><h3>Less manual admin</h3><p>Your team stops wasting hours on repetitive intake, reminders, and chasing missing details.</p></div>
+        <div class="card service-card"><h3>Better operational clarity</h3><p>Everyone can see where leads are, what happened, and what should happen next.</p></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">FAQ</div>
+          <h2>Questions buyers usually ask before they move.</h2>
+        </div>
+        <p class="section-copy">This is built to sound practical and credible, especially for local operators who have heard too much AI hype already.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card faq-card"><h3>Is this just a chatbot?</h3><p>No. A chatbot can be one piece, but the real product is the system behind it: database, CRM, routing, reminders, booking, and follow-up logic.</p></div>
+        <div class="card faq-card"><h3>Can this work with our current process?</h3><p>Usually yes. We can improve what you already have instead of forcing a giant operational reset all at once.</p></div>
+        <div class="card faq-card"><h3>Do I need a lot of leads already?</h3><p>No, but the value is highest when leads are already coming in and your business wants to stop leaking them.</p></div>
+        <div class="card faq-card"><h3>Will it feel robotic to customers?</h3><p>It should not. The goal is faster, clearer communication — not awkward automation that damages trust.</p></div>
+        <div class="card faq-card"><h3>What platforms can this connect to?</h3><p>That depends on the workflow, but we can structure landing pages, forms, CRM flows, reminders, and custom database-backed systems around your process.</p></div>
+        <div class="card faq-card"><h3>What’s the first step?</h3><p>A short call to identify the bottleneck, the revenue leak, and the fastest system that would make a real difference.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="final-band">
+        <div>
+          <div class="section-kicker">Next step</div>
+          <h2>Want an AI system that actually helps the business run better?</h2>
+          <p class="section-copy" style="margin-top:12px;">If you already have leads, appointments, or customer conversations coming in, we can turn that chaos into a cleaner operating system.</p>
+        </div>
+        <div>
+          <div class="cta-row" style="margin-top:0;">
+            <a class="btn primary" href="tel:3525506403">Call 352-550-6403</a>
+            <a class="btn secondary" href="mailto:hello@ocalaleadsystems.com?subject=AI%20Automation%20System">Email the team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>Ocala Lead Systems</div>
+        <div>Ocala, Florida · hello@ocalaleadsystems.com · 352-550-6403</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
