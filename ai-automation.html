@@ -133,6 +133,13 @@
     .service-card h3, .industry-card h3, .faq-card h3, .tier h3, .stack-card h3 { margin:14px 0 10px; font-size:24px; letter-spacing:-.03em; }
     .service-card p, .industry-card p, .faq-card p, .tier p, .stack-card p { margin:0; color:var(--muted); line-height:1.8; }
     .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .audit-form { display:grid; gap:14px; padding:28px; border-radius:var(--radius); border:1px solid var(--line-strong); background:linear-gradient(135deg, rgba(209,177,118,.12), rgba(255,255,255,.03)); }
+    .audit-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .audit-form label { display:grid; gap:8px; color:var(--accent-2); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .audit-form input, .audit-form select, .audit-form textarea { width:100%; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--text); padding:14px 16px; font:inherit; outline:none; }
+    .audit-form textarea { min-height:140px; resize:vertical; }
+    .audit-form input::placeholder, .audit-form textarea::placeholder { color:#9f9787; }
+    .audit-note { color:var(--muted); line-height:1.7; font-size:14px; }
     .tier.featured { border-color: var(--line-strong); transform: translateY(-8px); }
     .price { font-size:46px; font-weight:800; letter-spacing:-.06em; margin:16px 0 8px; }
     .small { color:var(--muted); font-size:14px; }
@@ -145,12 +152,12 @@
     .footer-grid { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:22px; }
     @media (max-width: 1100px) {
       .hero, .section-head, .final-band, .pricing-grid, .grid-4 { grid-template-columns:1fr; }
-      .grid-3, .stack { grid-template-columns:1fr 1fr; }
+      .grid-3, .stack, .audit-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width: 780px) {
       .nav { gap:16px; flex-direction:column; align-items:flex-start; }
       .nav-links { flex-wrap:wrap; gap:12px 16px; }
-      .grid-3, .grid-4, .pricing-grid, .stack { grid-template-columns:1fr; }
+      .grid-3, .grid-4, .pricing-grid, .stack, .audit-grid { grid-template-columns:1fr; }
       .hero { padding-top:12px; }
       .btn { width:100%; }
     }
@@ -401,6 +408,59 @@
       </div>
     </section>
 
+    <section id="audit">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Free audit</div>
+          <h2>Request a quick automation audit.</h2>
+        </div>
+        <p class="section-copy">This gives interested buyers a cleaner next step than a generic discovery call. They can tell you their niche, bottleneck, and current workflow first, which should improve lead quality.</p>
+      </div>
+      <form class="audit-form" onsubmit="return submitAuditForm(event, 'autoaudit')">
+        <div class="audit-grid">
+          <label>Name
+            <input id="autoaudit-name" type="text" placeholder="Your name" required />
+          </label>
+          <label>Business name
+            <input id="autoaudit-business" type="text" placeholder="Business name" required />
+          </label>
+          <label>Email
+            <input id="autoaudit-email" type="email" placeholder="you@business.com" required />
+          </label>
+          <label>Phone
+            <input id="autoaudit-phone" type="text" placeholder="Best callback number" />
+          </label>
+          <label>Niche
+            <select id="autoaudit-niche" required>
+              <option value="">Select a niche</option>
+              <option>Roofing & Home Services</option>
+              <option>Home Care & Senior Care</option>
+              <option>Med Spas & Clinics</option>
+              <option>Other Local Service Business</option>
+            </select>
+          </label>
+          <label>Main workflow problem
+            <select id="autoaudit-bottleneck" required>
+              <option value="">Select the main issue</option>
+              <option>Lead capture / intake</option>
+              <option>Follow-up speed</option>
+              <option>Booking / reminders</option>
+              <option>CRM / database organization</option>
+              <option>Routing / handoff</option>
+            </select>
+          </label>
+        </div>
+        <label>Describe the current workflow
+          <textarea id="autoaudit-notes" placeholder="Where do leads come in? What feels messy? What gets dropped or delayed?"></textarea>
+        </label>
+        <div class="cta-row" style="margin-top:0;">
+          <button class="btn primary" type="submit">Send automation audit request</button>
+          <a class="btn secondary" href="tel:3525506403">Or call 352-550-6403</a>
+        </div>
+        <div class="audit-note">This opens a prefilled email to hello@ocalaleadsystems.com so the lead can send a structured request without waiting for a backend form system.</div>
+      </form>
+    </section>
+
     <footer>
       <div class="footer-grid">
         <div>Ocala Lead Systems</div>
@@ -408,5 +468,25 @@
       </div>
     </footer>
   </div>
+  <script>
+    function submitAuditForm(event, prefix) {
+      event.preventDefault();
+      const get = (suffix) => document.getElementById(`${prefix}-${suffix}`)?.value?.trim() || "";
+      const subject = `Free Automation Audit — ${get('business') || 'New Prospect'}`;
+      const body = [
+        `Name: ${get('name')}`,
+        `Business: ${get('business')}`,
+        `Email: ${get('email')}`,
+        `Phone: ${get('phone')}`,
+        `Niche: ${get('niche')}`,
+        `Main workflow problem: ${get('bottleneck')}`,
+        "",
+        "Describe the current workflow:",
+        get('notes')
+      ].join('\n');
+      window.location.href = `mailto:hello@ocalaleadsystems.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return false;
+    }
+  </script>
 </body>
 </html>

@@ -284,6 +284,25 @@
     .small { color: var(--muted); font-size: 14px; }
     ul.clean { margin: 18px 0 0; padding-left: 18px; }
     .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .audit-form {
+      display: grid; gap: 14px; padding: 28px;
+      border: 1px solid var(--line-strong); border-radius: 32px;
+      background: linear-gradient(180deg, rgba(209,177,118,.10), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+    }
+    .audit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .audit-form label { display: grid; gap: 8px; color: var(--accent-2); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .audit-form input,
+    .audit-form select,
+    .audit-form textarea {
+      width: 100%; border-radius: 16px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.04); color: var(--text);
+      padding: 14px 16px; font: inherit; outline: none;
+    }
+    .audit-form textarea { min-height: 140px; resize: vertical; }
+    .audit-form input::placeholder,
+    .audit-form textarea::placeholder { color: #9f9787; }
+    .audit-note { color: var(--muted); line-height: 1.7; font-size: 14px; }
     .faq { display: grid; gap: 14px; }
     .faq .card { padding-top: 20px; padding-bottom: 20px; }
     .faq .card h3 { font-size: 18px; }
@@ -308,12 +327,12 @@
     }
     @media (max-width: 1100px) {
       .hero, .section-head, .final-band { grid-template-columns: 1fr; }
-      .grid-4, .pricing-grid, .why-grid, .process-wrap { grid-template-columns: 1fr 1fr; }
+      .grid-4, .pricing-grid, .why-grid, .process-wrap, .audit-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 780px) {
       .nav-links { display: none; }
       .hero { min-height: auto; padding-top: 18px; }
-      .problem-grid, .grid-3, .grid-4, .pricing-grid, .why-grid, .process-wrap, .signature { grid-template-columns: 1fr; }
+      .problem-grid, .grid-3, .grid-4, .pricing-grid, .why-grid, .process-wrap, .signature, .audit-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: clamp(50px, 16vw, 78px); }
       .price { font-size: 52px; }
       .final-band { padding: 28px; }
@@ -633,6 +652,59 @@
       </div>
     </section>
 
+    <section id="audit">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Free audit</div>
+          <h2>Request a quick lead-response audit.</h2>
+        </div>
+        <p class="section-copy">This gives serious buyers a lower-friction next step than a cold discovery call. They can send their business details, niche, and biggest bottleneck first so the conversation starts with real context.</p>
+      </div>
+      <form class="audit-form" onsubmit="return submitAuditForm(event, 'audit')">
+        <div class="audit-grid">
+          <label>Name
+            <input id="audit-name" type="text" placeholder="Your name" required />
+          </label>
+          <label>Business name
+            <input id="audit-business" type="text" placeholder="Business name" required />
+          </label>
+          <label>Email
+            <input id="audit-email" type="email" placeholder="you@business.com" required />
+          </label>
+          <label>Phone
+            <input id="audit-phone" type="text" placeholder="Best callback number" />
+          </label>
+          <label>Niche
+            <select id="audit-niche" required>
+              <option value="">Select a niche</option>
+              <option>Roofing & Home Services</option>
+              <option>Home Care & Senior Care</option>
+              <option>Med Spas & Clinics</option>
+              <option>Other Local Service Business</option>
+            </select>
+          </label>
+          <label>Biggest bottleneck
+            <select id="audit-bottleneck" required>
+              <option value="">Select the biggest leak</option>
+              <option>Slow first response</option>
+              <option>Messy intake</option>
+              <option>Weak follow-up</option>
+              <option>Booking / reminder issues</option>
+              <option>CRM / database organization</option>
+            </select>
+          </label>
+        </div>
+        <label>What is happening right now?
+          <textarea id="audit-notes" placeholder="Tell us how leads currently come in, where the response breaks, and what feels messy."></textarea>
+        </label>
+        <div class="cta-row" style="margin-top:0;">
+          <button class="btn primary" type="submit">Send free audit request</button>
+          <a class="btn secondary" href="tel:3525506403">Or call 352-550-6403</a>
+        </div>
+        <div class="audit-note">Submitting opens a prefilled email to hello@ocalaleadsystems.com so the request is structured and easy to send right away without needing backend form infrastructure yet.</div>
+      </form>
+    </section>
+
     <footer>
       <div class="footer-grid">
         <div>Ocala Lead Systems</div>
@@ -640,5 +712,25 @@
       </div>
     </footer>
   </div>
+  <script>
+    function submitAuditForm(event, prefix) {
+      event.preventDefault();
+      const get = (suffix) => document.getElementById(`${prefix}-${suffix}`)?.value?.trim() || "";
+      const subject = `Free Audit Request — ${get('business') || 'New Prospect'}`;
+      const body = [
+        `Name: ${get('name')}`,
+        `Business: ${get('business')}`,
+        `Email: ${get('email')}`,
+        `Phone: ${get('phone')}`,
+        `Niche: ${get('niche')}`,
+        `Biggest bottleneck: ${get('bottleneck')}`,
+        "",
+        "What is happening right now?",
+        get('notes')
+      ].join('\n');
+      window.location.href = `mailto:hello@ocalaleadsystems.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return false;
+    }
+  </script>
 </body>
 </html>
