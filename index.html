@@ -698,10 +698,11 @@
           <textarea id="audit-notes" placeholder="Tell us how leads currently come in, where the response breaks, and what feels messy."></textarea>
         </label>
         <div class="cta-row" style="margin-top:0;">
-          <button class="btn primary" type="submit">Send free audit request</button>
+          <button class="btn primary" id="audit-submit" type="submit">Send free audit request</button>
           <a class="btn secondary" href="tel:3525506403">Or call 352-550-6403</a>
         </div>
-        <div class="audit-note">Submitting opens a prefilled email to hello@ocalaleadsystems.com so the request is structured and easy to send right away without needing backend form infrastructure yet.</div>
+        <div class="audit-note">Submitting now sends the lead into the Ocala Lead Systems CRM in Notion. If the API endpoint is unavailable, the form falls back to a prefilled email.</div>
+        <div id="audit-status" class="audit-note" style="display:none; margin-top:12px;"></div>
       </form>
     </section>
 
@@ -713,22 +714,86 @@
     </footer>
   </div>
   <script>
-    function submitAuditForm(event, prefix) {
+    async function submitAuditForm(event, prefix) {
       event.preventDefault();
+
       const get = (suffix) => document.getElementById(`${prefix}-${suffix}`)?.value?.trim() || "";
-      const subject = `Free Audit Request — ${get('business') || 'New Prospect'}`;
-      const body = [
-        `Name: ${get('name')}`,
-        `Business: ${get('business')}`,
-        `Email: ${get('email')}`,
-        `Phone: ${get('phone')}`,
-        `Niche: ${get('niche')}`,
-        `Biggest bottleneck: ${get('bottleneck')}`,
-        "",
-        "What is happening right now?",
-        get('notes')
-      ].join('\n');
-      window.location.href = `mailto:hello@ocalaleadsystems.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const submitBtn = document.getElementById('audit-submit');
+      const statusEl = document.getElementById('audit-status');
+      const apiBase = window.OCALA_API_BASE || '';
+      const endpoint = `${apiBase}/api/leads`;
+
+      const lead = {
+        contactName: get('name'),
+        businessName: get('business'),
+        email: get('email'),
+        phone: get('phone'),
+        niche: get('niche'),
+        bottleneck: get('bottleneck'),
+        notes: get('notes'),
+        source: 'Website Form',
+        offer: 'Free Audit',
+        page: window.location.href,
+        priority: 'High',
+        city: 'Ocala'
+      };
+
+      const fallbackToEmail = () => {
+        const subject = `Free Audit Request — ${lead.businessName || 'New Prospect'}`;
+        const body = [
+          `Name: ${lead.contactName}`,
+          `Business: ${lead.businessName}`,
+          `Email: ${lead.email}`,
+          `Phone: ${lead.phone}`,
+          `Niche: ${lead.niche}`,
+          `Biggest bottleneck: ${lead.bottleneck}`,
+          '',
+          'What is happening right now?',
+          lead.notes
+        ].join('\n');
+        window.location.href = `mailto:hello@ocalaleadsystems.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      };
+
+      if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.style.color = 'var(--muted)';
+        statusEl.textContent = 'Sending your audit request...';
+      }
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '.7';
+      }
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lead)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        if (statusEl) {
+          statusEl.style.color = 'var(--accent-2)';
+          statusEl.textContent = 'Thanks — your audit request was received. We will follow up shortly.';
+        }
+        event.target.reset();
+      } catch (error) {
+        console.error('Audit submit failed, falling back to email:', error);
+        if (statusEl) {
+          statusEl.style.color = 'var(--danger)';
+          statusEl.textContent = 'The direct CRM submit is unavailable right now. Opening your email app instead so you can still send the request.';
+        }
+        fallbackToEmail();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }
+      }
+
       return false;
     }
   </script>
