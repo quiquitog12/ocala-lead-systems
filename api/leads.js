@@ -1,6 +1,6 @@
 const NOTION_VERSION = '2025-09-03';
 const NOTION_API_URL = 'https://api.notion.com/v1/pages';
-const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || '91614b14-c853-442b-9373-89e0634470ac';
+const NOTION_DATABASE_ID = (process.env.NOTION_DATABASE_ID || '91614b14-c853-442b-9373-89e0634470ac').trim();
 
 function text(value) {
   return value ? [{ text: { content: String(value).slice(0, 1900) } }] : [];
